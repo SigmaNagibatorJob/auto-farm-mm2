@@ -1,4 +1,14 @@
-local TweenService = game:GetService("TweenService")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+
+local Windows = Library.CreateLib("Name", "RJTheme3")
+
+local Tab = Windows:NewTab("da")
+
+local Section = Tab:NewSection("Section Name")
+
+
+Section:NewButton("auto farm", "ButtonInfo", function()
+	local TweenService = game:GetService("TweenService")
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
@@ -232,4 +242,9 @@ player.OnTeleport:Connect(function(teleportState)
             game:GetService("TeleportService"):Teleport(game.PlaceId, player)
         end)
     end
+end)
+end)
+
+Section:NewSlider("speed", "SliderInfo", 500, 0, function(s)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
